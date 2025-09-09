@@ -16,10 +16,10 @@ push: null
 pull:
   - prefect.deployments.steps.run_shell_script:
       id: get-github-token
-      script: uv tool run prefect-cloud github token MoonSiftTech/platform
+      script: uv tool run prefect-cloud github token badrequest400/prefect-poc
   - prefect.deployments.steps.git_clone:
       id: git-clone
-      repository: https://x-access-token:{{ get-github-token.stdout }}@github.com/MoonSiftTech/platform.git
+      repository: https://x-access-token:{{ get-github-token.stdout }}@github.com/badrequest400/prefect-poc.git
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
@@ -29,7 +29,7 @@ deployments:
     description: null
     schedule: {}
     flow_name: null
-    entrypoint: src/start.py:main
+    entrypoint: start.py:main
     parameters: {}
     work_pool:
       name: null
